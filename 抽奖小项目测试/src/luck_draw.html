@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>模拟抽奖图</title>
+<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		/*
+			1.停止按钮失效
+			  设置按钮的disabled属性
+			 attr("disabled","disabled")
+		     prop("disabled",true);
+		
+			2.当点击开始按钮时，图片开始替换(imgID的src属性)，开始按钮失效，停止按钮生效
+		 */
+		//替换图片逻辑
+		var num = 1;
+		var replace = function() {
+			$("#img1ID").attr("src", "../img/" + num + ".jpg");
+			num++;
+			if (num > 5) {
+				num = 1;
+			}
+		}
+		//初始化停止按钮
+		$("#stopID").prop("disabled", true);
+		//开始按钮点击事件
+		var flag = null;
+		$("#startID").click(function() {
+			//当开始按钮失效时
+			$(this).prop("disabled", true);
+			//停止按钮生效
+			$("#stopID").prop("disabled", false);
+
+			//替换图片src属性
+			flag = setInterval(replace, 50);
+		})
+
+		//停止按钮点击事件
+		$("#stopID").click(function() {
+			//停止按钮失效
+			$(this).prop("disabled", true);
+			//开始按钮生效
+			$("#startID").prop("disabled", false);
+
+			//图片停止替换，清除定时器
+			clearInterval(flag);
+			//先隐藏再显示
+			$("#img2ID").hide();
+			//将小图片的路劲让大图片显示
+			//设置大图片的路劲为小图片路径
+			$("#img2ID").attr("src", $("#img1ID").attr("src"));
+			//展示,缓慢出现
+			$("#img2ID").show(1000);
+		});
+	});
+</script>
+</head>
+<body>
+
+	<!-- 小像框 -->
+	<div style="border-style: dotted; width: 160px; height: 100px">
+		<img id="img1ID" src="../img/1.jpg"
+			style="width: 160px; height: 100px" />
+	</div>
+
+	<!-- 大像框 -->
+	<div
+		style="border-style: double; width: 800px; height: 500px; position: absolute; left: 500px; top: 10px">
+		<img id="img2ID" src="../img/1.jpg" width="800px" height="500px" />
+	</div>
+
+	<!-- 开始按钮 -->
+	<input id="startID" type="button" value="点击开始"
+		style="width: 150px; height: 150px; font-size: 22px">
+
+	<!-- 停止按钮 -->
+	<input id="stopID" type="button" value="点击停止"
+		style="width: 150px; height: 150px; font-size: 22px">
+
+
+</body>
+</html>
