@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base href="http://127.0.0.1:8980/Login-test/">
+<meta charset="UTF-8">
+<title>登陆页面</title>
+<style type="text/css">
+	body{
+		background:url("img/1.jpg") no-repeat;
+		  background-size: 100%;
+	}
+	div{
+		background-color:white;
+		margin-top:150px;
+		margin-left:410px;
+		text-align:center;
+		height:350px;
+		width:500px;
+		border:1px solid grey;
+	}
+	form{
+		margin-top: 60px;
+		line-height: 35px;
+	}
+</style>
+</head>
+<body>
+	<div>
+		<h1 style="margin-top: 40px;margin-left: 40px">欢迎使用本登录页面！</h1>
+		<form action="LoginServlet" method="post">
+			<label>用户名:</label> 
+			<input type="text" placeholder="请输入用户名" name="username"> 
+			<br /> 
+			<label>密&nbsp;&nbsp;&nbsp;码:</label> 
+			<input type="password" placeholder="请输入密码" name="passwd"> 
+			<br /> 
+			&nbsp;&nbsp;&nbsp;<input type="checkbox" name="isR" value="Y">自动登录
+			 <br /> 
+			 <input type="submit" value="登陆">
+		</form>
+
+	</div>
+		<p style="text-align: center;margin-top: 80px;">Copyright © 2020 - 2025 java-exsice.All Rights Reserved.</p>
+</body>
+</html>
