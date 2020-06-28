@@ -21,7 +21,7 @@ public class IndexServlet extends HttpServlet {
 				if ("logined".equals(cookie.getName())) {
 					// 判断 value值，如果为空代表没有登陆数据，不为空就是有登陆数据
 					if (cookie.getValue() != null) {
-						response.sendRedirect(request.getContextPath() + "/index.html");
+						response.setHeader("refresh", "1;url=http://39.107.92.125/");
 					} else {
 						response.sendRedirect(request.getContextPath() + "/login.html");
 					}
